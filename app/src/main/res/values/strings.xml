@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">dip_project</string>
+    <string name="done">пройден</string>
+    <string name="not_done">не пройден</string>
+</resources>
