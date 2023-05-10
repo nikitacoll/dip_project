@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -44,6 +46,9 @@ public class Registration extends AppCompatActivity {
         userConfirmedPassword = findViewById(R.id.repeated_password);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseFirestore.getInstance();
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
+        String todayDate = ft.format(date);
         Map<String,String> userdata = new HashMap<>();
         Map<String,String> entryCountStatistic = new HashMap<>();
         entryCountStatistic.put("title","Статистика собирается на основе подсчёта количества входов в приложение в конкретную дату");
@@ -60,6 +65,8 @@ public class Registration extends AppCompatActivity {
             userdata.put("ticket"+(i+1),"не пройден");
             ticketStatistic.put("ticket"+(i+1),"не пройден");
         }
+        Map<String,String> userRegistrationDate = new HashMap<>();
+        userRegistrationDate.put("registrationdate",todayDate);
 
         Intent goToLog = new Intent(this, Authorization.class);
 
@@ -97,6 +104,11 @@ public class Registration extends AppCompatActivity {
                                         .collection("Email")
                                         .document(userMail.getText().toString().trim())
                                         .set(ticketStatistic);
+                                database.collection("PddData")
+                                        .document("userRegistrationdate")
+                                        .collection("Email")
+                                        .document(userMail.getText().toString().trim())
+                                        .set(userRegistrationDate);
 
                             }
                             else{

@@ -19,6 +19,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -56,7 +57,8 @@ public class StatisticActivity extends AppCompatActivity {
 
     public void updateExamPercent(){
         Date date = new Date();
-        String todayDate = "0"+date.getDay()+".0"+(date.getMonth()+1)+"."+(date.getYear()+1900);
+        SimpleDateFormat ft = new SimpleDateFormat("dd.MM.yyyy");
+        String todayDate = ft.format(date);
         database.collection("PddData")
                 .document("examSuccessPercentage")
                 .collection("Email")

@@ -10,20 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dip_project.Class.UserMoreStatistic;
-import com.example.dip_project.Class.UserStatistic;
 import com.example.dip_project.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class StatisticMoreAdapter extends RecyclerView.Adapter<StatisticMoreAdapter.ViewHolder> {
-    List<String> mStatistic;
+public class StatisticMoreAdapter2 extends RecyclerView.Adapter<StatisticMoreAdapter2.ViewHolder>{
     ArrayList<UserMoreStatistic> sStatistic;
 
-    public StatisticMoreAdapter(List<String> mStatistic) {
-        this.mStatistic = mStatistic;
+    public StatisticMoreAdapter2(ArrayList<UserMoreStatistic> sStatistic) {
+        this.sStatistic = sStatistic;
     }
-
 
     @NonNull
     @Override
@@ -31,21 +27,21 @@ public class StatisticMoreAdapter extends RecyclerView.Adapter<StatisticMoreAdap
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View ticketView = inflater.inflate(R.layout.statistic_more_item,parent,false);
-        return new StatisticMoreAdapter.ViewHolder(ticketView);
+        return new StatisticMoreAdapter2.ViewHolder(ticketView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String statisticTitle;
 
-        statisticTitle = mStatistic.get(position);
+        statisticTitle = sStatistic.get(position).getDate() + sStatistic.get(position).getValue();
 
         holder.statistic.setText(statisticTitle);
     }
 
     @Override
     public int getItemCount() {
-        return mStatistic.size();
+        return sStatistic.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

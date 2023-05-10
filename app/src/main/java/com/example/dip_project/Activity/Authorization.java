@@ -59,7 +59,7 @@ public class Authorization extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Вы вошли", Toast.LENGTH_LONG).show();
                         loggingInAccount.putExtra("Email",userLogin.getText().toString().trim());
                         startActivity(loggingInAccount);
-//                        updateUserEntries();
+          //              updateUserEntries();
                     } else {
                         try {
                             Log.d("Firebase",task.getException().toString());
@@ -90,7 +90,7 @@ public class Authorization extends AppCompatActivity {
     }
 //    public void updateUserEntries(){
 //        database.collection("PddData")
-//                .document("userPersonalStatistick")
+//                .document("entryCountStatistic")
 //                .collection("Email")
 //                .document(userLogin.getText().toString().trim())
 //                .get().addOnCompleteListener(task1 -> {
