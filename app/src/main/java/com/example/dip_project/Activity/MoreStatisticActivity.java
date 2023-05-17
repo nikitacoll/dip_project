@@ -85,7 +85,7 @@ public class MoreStatisticActivity extends AppCompatActivity {
                     .document(email.getCurrentUser().getEmail())
                     .get().addOnCompleteListener(task -> {
                         date[0] = task.getResult().get("registrationdate").toString();
-                        for(int i = 0;i < 365;i++){
+                        for(int i = 0;i < 35;i++){
                             database.collection("PddData")
                                     .document("examSuccessPercentage")
                                     .collection("Email")
@@ -93,7 +93,7 @@ public class MoreStatisticActivity extends AppCompatActivity {
                                     .get().addOnCompleteListener(task1 -> {
                                         try {
                                             statistic2.add(new UserMoreStatistic(
-                                                    "Средний балл экзамена на "+date[0] + " - ",task1.getResult()
+                                                    "Процент успешности сдачи экзамена экзамена на "+date[0] + " - ",task1.getResult()
                                                     .get(FieldPath.of(date[0].trim())).toString()));
                                             date[0] = datePlusOne(date[0]);
                                         }catch (Exception ex){

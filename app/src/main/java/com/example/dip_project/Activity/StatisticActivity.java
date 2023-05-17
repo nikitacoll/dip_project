@@ -40,8 +40,6 @@ public class StatisticActivity extends AppCompatActivity {
         rv = findViewById(R.id.statistic_recycler);
         updateExamPercent();
         ArrayList<UserStatistic> statisticsList = new ArrayList<>();
-        statisticsList.add(new UserStatistic("entryCountStatistic","статистика входов"));
-        statisticsList.add(new UserStatistic("examAverageScore","средний бал экзамена"));
         statisticsList.add(new UserStatistic("examSuccessPercentage","процент успешности экзамена"));
         statisticsList.add(new UserStatistic("ticketStatistic","статистика билетов"));
         StatisticAdapter adapter = new StatisticAdapter(statisticsList, statistic -> {
